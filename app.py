@@ -15,10 +15,6 @@ app.config['SQLALCHEMY_TRACK_MODIFIATIONS'] = False
 app.secret_key ='hi' #key for authentiatin
 api= Api(app)
 
-@app.before_first_request #before the first request made in our app, the below function will execute
-def create_tables():
-    db.create_all()
-
 jwt= JWT(app, authenticate, identity)
 
 api.add_resource(Item, '/item/<string:name>') #Adding STudent as a resource and giving it a path
